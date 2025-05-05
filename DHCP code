@@ -1,0 +1,21 @@
+Would you like to enter the initial configuration dialog? [yes/no]: no 
+Press RETURN to get started! 
+Router> 
+Router> 
+Router>en 
+Router#conf t 
+Enter configuration commands, one per line. End with CNTL/Z. 
+Router (config)#int fa0/0 
+Router (config-if)#ip add 192.168.1.1 255.255.255.0 
+Router(config-if)#no shutdown 
+Router (config-if)# 
+LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up 
+LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up 
+Router (config-if)#exit 
+Router(config)# 
+Router(config)# 
+Router (config)#ip dhcp pool mypool 
+Router (dhcp-config) #network 192.168.1.0 255.255.255.0 
+Router (dhcp-config)#default-router 192.168.1.1 
+Router (dhcp-config)#DHCPD-4-PING_CONFLICT: DHCP address conflict: 
+server pinged 192.168.1.1.
