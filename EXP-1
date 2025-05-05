@@ -1,0 +1,39 @@
+clc;
+close all;
+clear all;
+
+c1=[1 -1 1 1];
+c2=[1 1 1 -1];
+c3=[1 1 1 1];
+c4=[-1 -1 -1 1];
+
+%enter data bit sequence
+b1= input('Enter the bit sequence b1');
+b2= input('Enter the bit sequence b2');
+b3= input('Enter the bit sequence b3');
+b4= input('Enter the bit sequence b4');
+
+choice=input('enter choice');
+
+r1=c1.*b1;
+r2=c2.*b2;
+r3=c3.*b3;
+r4=c4.*b4;
+rc=[];
+
+tr_seq=r1+r2+r3+r4;
+
+if choice==1
+  rc=c1; rt=r2+r3+r4;
+elseif choice==2
+  rt=r1+r3+r4;
+  rc=c2;
+elseif choice==3
+  rt=r2+r1+r4;
+  rc=c3;
+elseif choice == 4
+   rt = r2 + r3 + r1;
+   rc = c4;
+end
+s=tr_seq-rt;
+rec_seq=s./rc
