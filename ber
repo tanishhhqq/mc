@@ -1,0 +1,18 @@
+clc;
+clear all;
+close all;
+N=1000000;
+EbN0dB = (-5:1:15);
+BER_sim = zeros(size(EbN0dB));
+data = randi([0,1],1,N);
+modulated_data = 2*data-1;
+for i= 1:length(EbN0dB) EbN0 = 10^(EbN0dB(i)/10);
+noise_power = 1/(2*EbN0);
+h = 1/sqrt(2)*(randn(1,N)+1i*randn(1,N)); noise = sqrt(noise_power)*randn(1,N); y_rayleigh = h.*modulated_data+noise; y_rayleigh_rec = y_rayleigh./h;  r_rayleigh = real(y_rayleigh_rec)>0; errors = sum(r_rayleigh~=data); BER_sim(i) = errors/N;
+therotical_rayleigh = 0.5*(1-sqrt(EbN0dB./(1+EbN0dB)));
+end
+semilogy(EbN0dB,BER_sim,'-o'); hold on
+semilogy(EbN0dB,therotical_rayleigh,'-*'); xlabel('Eb/N0(dB)');
+ylabel('Bit Error Rate (BER)');
+title('BPSK for rayleigh channel in presence of AWGN'); legend('Practical BER', 'Theoretical BER');
+grid on;
