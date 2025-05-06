@@ -1,0 +1,19 @@
+enable
+
+config terminal
+
+interface Fast Ethernet 0/0
+
+no shutdown.
+
+ip address 192.168.1.1 255.255.255.0
+
+ip dhcp pool abc
+
+network 192.168.1.1 255.255.255.0
+
+default-router 192.168.1.1
+
+dns-server 0.0.0.0
+
+exit
