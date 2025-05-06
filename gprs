@@ -1,0 +1,17 @@
+Commands :
+Router>enable
+Router#configure terminal
+Enter configuration commands, one per line. End with CNTL/Z.
+Router(config)#interface FastEthernet 0/0
+Router (config-if)#no shutdown
+Router(config-if)#
+LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+ip address 192.168.1.1 255.255.255.0
+Router(config-if)#dhcp pool abe
+Invalid input detected at marker.
+Router(config-if)#ip dhcp pool abc
+Router (dhcp-config)#network 192.168.1.1 255.255.255.0
+Router (dhcp-config)#default-router 192.168.1.1
+Router (dhcp-config)#dns-server 8.8.8.8
+Router (dhcp-config)#exit
